@@ -18,6 +18,11 @@ class Tests(TestCase):
         self.assertEqual("から、<ruby>突然<rt>とつぜん</rt></ruby>、<ruby>恐<rt>おそ</rt></ruby>ろしい", aozora_to_ruby(test_line))
 
     def test_em(self):
-        test_line = "はづな《ヽヽヽ》"
-        expected = "<ruby>はづな<rt>ヽヽヽ</rt></ruby>"
+        test_line = "｜はづな《ヽヽヽ》"
+        expected = "｜<b>はづな</b>"
+        self.assertEqual(expected, aozora_to_ruby(test_line))
+
+    def test_em2(self):
+        test_line = "おたがいが｜またいとこ《ヽヽヽヽヽ》"
+        expected = "おたがいが｜<b>またいとこ</b>"
         self.assertEqual(expected, aozora_to_ruby(test_line))
